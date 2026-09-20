@@ -1,4 +1,4 @@
-package ru.bulgakov.qa.ya;
+package ru.bulgakov.qa.first_sprint.pages.ya;
 
 import com.codeborne.selenide.ElementsCollection;
 

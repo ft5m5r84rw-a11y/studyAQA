@@ -1,4 +1,4 @@
-package ru.bulgakov.qa.wiki;
+package ru.bulgakov.qa.first_sprint.pages.wiki;
 
 import com.codeborne.selenide.SelenideElement;
 

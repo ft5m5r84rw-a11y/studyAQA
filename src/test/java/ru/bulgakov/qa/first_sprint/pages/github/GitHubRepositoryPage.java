@@ -1,6 +1,5 @@
-package ru.bulgakov.qa.github;
+package ru.bulgakov.qa.first_sprint.pages.github;
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
@@ -13,7 +12,6 @@ public class GitHubRepositoryPage {
     private final SelenideElement nameRepositories = $(".Box-row a");
     private final SelenideElement clikRepositories = $(".repo");
     private final SelenideElement wikiButton = $(byText("Wiki"));
-    /*private final ElementsCollection wikiButton = $$(".prc-components-UnderlineItem-7fP-n li"); не понимаю, почему не получается со списками*/
     private final SelenideElement wikiTab = $("#wiki-wrapper");
 
 

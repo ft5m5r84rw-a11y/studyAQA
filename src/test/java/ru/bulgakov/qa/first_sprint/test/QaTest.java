@@ -1,14 +1,11 @@
-package ru.bulgakov.qa;
+package ru.bulgakov.qa.first_sprint.test;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
-import ru.bulgakov.qa.github.GitHubPage;
-import ru.bulgakov.qa.wiki.WikipediaSearchPages;
-import ru.bulgakov.qa.ya.WelcomePage;
-import ru.bulgakov.qa.ya.YandexSearchPage;
-import ru.bulgakov.qa.ya.YandexSearchResultsPage;
+import ru.bulgakov.qa.first_sprint.pages.github.GitHubPage;
+import ru.bulgakov.qa.first_sprint.pages.wiki.WikipediaSearchPages;
+import ru.bulgakov.qa.first_sprint.pages.ya.YandexSearchPage;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class QaTest {
