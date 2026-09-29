@@ -8,7 +8,7 @@ import webshop.pages.WsRegistrationPage;
 import static com.codeborne.selenide.Selenide.*;
 import static webshop.config.Config.WEB_SHOP_REGISTRATION_URL;
 
-public class LoginTest {
+public class LoginTest  extends TestBase {
     private static final Faker faker = new Faker();
     private String emailAddress;
     private String password;

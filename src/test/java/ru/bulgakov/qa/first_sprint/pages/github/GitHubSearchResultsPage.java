@@ -2,19 +2,21 @@ package ru.bulgakov.qa.first_sprint.pages.github;
 
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class GitHubSearchResultsPage {
-    private final SelenideElement groupList = $("#_r_8_--label");
+    private final SelenideElement groupList = $(byText("Users"));
+    private final SelenideElement searchResults = $(".Users-module__titleLoginText__J6lmd");
 
 
-    public GitHubRepositoryPage usersTopic() {
-        sleep(10000);
+    public GitHubSearchResultsPage usersTopic() {
         groupList.click();
-        return new GitHubRepositoryPage();
+        return this;
     }
 
-
+    public GitHubUserPage resultsUsers() {
+        searchResults.click();
+        return new GitHubUserPage();
+    }
 }

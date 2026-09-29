@@ -5,13 +5,7 @@ import org.junit.jupiter.api.Test;
 import webshop.Steps.AuthSteps;
 import webshop.pages.WsCatalogPage;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-
-public class CartTest {
+public class CartTest extends TestBase {
 
     private final AuthSteps authSteps = new AuthSteps();
 

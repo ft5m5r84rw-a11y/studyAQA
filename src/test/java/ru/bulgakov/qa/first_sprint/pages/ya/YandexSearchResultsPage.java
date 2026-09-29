@@ -1,25 +1,29 @@
 package ru.bulgakov.qa.first_sprint.pages.ya;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selectors.byText;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class YandexSearchResultsPage {
     private final SelenideElement distributionClose = $(".DistributionButtonClose");
-
+    private final ElementsCollection webSiteName = $$("a[href='https://ivanbulgakovqa.ru/']");
 
     public YandexSearchResultsPage closeDistributionButton() {
-        sleep(3000);
-        if (distributionClose.exists()) {
-            distributionClose.click(); // если есть всплывающее окно, то закрыть
+        if (distributionClose.is(visible, Duration.ofSeconds(2))) {
+            distributionClose.click();
         }
         return this;
     }
 
-    public WelcomePage openLink(String webSiteName) {
-        $(byText(webSiteName)).click();
+    public WelcomePage openLink() {
+        webSiteName.filterBy(visible)
+                .first()
+                .click();
         return new WelcomePage();
     }
 }

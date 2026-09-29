@@ -1,6 +1,8 @@
 package webshop.test;
 
+import com.codeborne.selenide.Configuration;
 import net.datafaker.Faker;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import webshop.pages.WsWelcomePage;
 
@@ -8,7 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static webshop.config.Config.WEB_SHOP_URL;
 
 
-public class RegistrationTest {
+public class RegistrationTest extends TestBase {
     private static final Faker faker = new Faker();
 
 
