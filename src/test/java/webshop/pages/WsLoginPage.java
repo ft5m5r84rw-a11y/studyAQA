@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$$;
 public class WsLoginPage {
 
     private final SelenideElement loginButton = $("a.ico-login");
-    private final SelenideElement tittleText = $("div.page-title");
+    private final SelenideElement titleText = $("div.page-title");
     private final SelenideElement emailInput = $("input.email");
     private final SelenideElement passwordInput = $("input.password");
     private final SelenideElement rememberMeCheckbox = $("#RememberMe");
@@ -22,27 +22,39 @@ public class WsLoginPage {
         loginButton.click();
         return this;
 
-    }public WsLoginPage checkLoginPageOpened() {
-        tittleText.shouldHave(text("Welcome, Please Sign In!"));
+    }
+
+    public WsLoginPage checkLoginPageOpened() {
+        titleText.shouldHave(text("Welcome, Please Sign In!"));
         return this;
 
-    }public WsLoginPage enterEmail(String email) {
+    }
+
+    public WsLoginPage enterEmail(String email) {
         emailInput.setValue(email);
         return this;
 
-    }public WsLoginPage enterPassword(String password) {
+    }
+
+    public WsLoginPage enterPassword(String password) {
         passwordInput.setValue(password);
         return this;
 
-    }public WsLoginPage selectRememberMe() {
+    }
+
+    public WsLoginPage selectRememberMe() {
         rememberMeCheckbox.click();
         return this;
 
-    }public WsLoginPage submitLogin() {
+    }
+
+    public WsLoginPage submitLogin() {
         submitLoginButton.click();
         return this;
 
-    }public WsLoginPage checkUserEmail(String email) {
+    }
+
+    public WsLoginPage checkUserEmail(String email) {
         headerLinks.get(0).shouldHave(text(email));
         return this;
 

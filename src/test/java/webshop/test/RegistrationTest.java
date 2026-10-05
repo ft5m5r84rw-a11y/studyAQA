@@ -1,12 +1,10 @@
 package webshop.test;
 
-import com.codeborne.selenide.Configuration;
 import net.datafaker.Faker;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import webshop.pages.WsWelcomePage;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
 import static webshop.config.Config.WEB_SHOP_URL;
 
 
@@ -31,7 +29,6 @@ public class RegistrationTest extends TestBase {
                 .submitRegistration()
                 .checkResultRegistration()
                 .checkEmailIsShown(emailAddress);
-
 
 
     }

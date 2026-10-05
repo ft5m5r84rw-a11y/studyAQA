@@ -2,48 +2,29 @@ package webshop.pages;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class WsCartPage {
+public class WsCartPage extends BasePage {
 
     private final SelenideElement productName = $("a.product-name");
     private final SelenideElement productSubtotal = $("span.product-subtotal");
     private final SelenideElement quantity = $("input.qty-input");
+    private final SelenideElement productUnitPrice = $(".product-unit-price");
 
-    private final String itemName;
-    private final String itemPrice;
-
-    public WsCartPage(String itemName, String itemPrice) {
-        this.itemName = itemName;
-        this.itemPrice = itemPrice;
+    //WsCartPage: теперь он только находит элементы корзины и возвращает фактические значения
+    public String getItemName() {
+        return productName.getText();
     }
 
-    public WsCartPage checkProductName() {
-        productName.shouldHave(text(itemName));
-        return this;
+    public String getSubtotal() {
+        return productSubtotal.getText();
     }
 
-    public WsCartPage checkProductSubtotal(String itemQuantity) {
-        productSubtotal.shouldHave(text(String.valueOf(
-                Float.parseFloat(itemPrice) * Float.parseFloat(itemQuantity))));
-        return this;
+    public String getQuantity() {
+        return quantity.getValue();
     }
 
-    public WsCartPage checkQuantity(String itemQuantity) {
-        String itemQuantityInCart = quantity.getAttribute("value");
-        assertEquals(itemQuantity, itemQuantityInCart);
-        return this;
+    public String getUnitPrice() {
+        return productUnitPrice.getText();
     }
 }
-
-/*
-Смысл очень простой:
-        new WsCartPage(itemName, itemPrice)
-передаёт название и цену →
-public WsCartPage(String itemName, String itemPrice)
-их принимает →
-        this.itemName = itemName;
-this.itemPrice = itemPrice;
-сохраняет их внутри WsCartPage.*/

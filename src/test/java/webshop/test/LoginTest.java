@@ -5,10 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import webshop.pages.WsLoginPage;
 import webshop.pages.WsRegistrationPage;
+
 import static com.codeborne.selenide.Selenide.*;
 import static webshop.config.Config.WEB_SHOP_REGISTRATION_URL;
 
-public class LoginTest  extends TestBase {
+public class LoginTest extends TestBase {
     private static final Faker faker = new Faker();
     private String emailAddress;
     private String password;

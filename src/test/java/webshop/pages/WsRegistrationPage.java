@@ -8,14 +8,14 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class WsRegistrationPage {
-    private final SelenideElement pageTittle = $("div.page-title");
-    private final SelenideElement maleGenderRadio = $("input#gender-female");
-    private final SelenideElement firstNameInput =  $("input#FirstName");
-    private final SelenideElement lastNameInput =   $("input#LastName");
+    private final SelenideElement pageTitle = $("div.page-title");
+    private final SelenideElement femaleGenderRadio = $("input#gender-female");
+    private final SelenideElement firstNameInput = $("input#FirstName");
+    private final SelenideElement lastNameInput = $("input#LastName");
     private final SelenideElement emailInput = $("input#Email");
     private final SelenideElement passwordInput = $("input#Password");
     private final SelenideElement confirmPasswordInput = $("input#ConfirmPassword");
-    private final SelenideElement submitRegistrationButton =  $("input#register-button");
+    private final SelenideElement submitRegistrationButton = $("input#register-button");
     private final SelenideElement resultText = $("div.result");
     private final ElementsCollection headerLinks = $$("div.header-links ul li a");
 
@@ -35,17 +35,20 @@ public class WsRegistrationPage {
     }
 
     public WsRegistrationPage verifyRegistrationOpened() {
-        pageTittle.shouldHave(text("Register"));
+        pageTitle.shouldHave(text("Register"));
         return this;
     }
+
     public WsRegistrationPage selectFemaleGender() {
-        maleGenderRadio.click();
+        femaleGenderRadio.click();
         return this;
     }
+
     public WsRegistrationPage enterFirstName(String firstName) {
         firstNameInput.setValue(firstName);
         return this;
     }
+
     public WsRegistrationPage enterLastName(String lastName) {
         lastNameInput.setValue(lastName);
         return this;
@@ -57,29 +60,34 @@ public class WsRegistrationPage {
         return this;
 
     }
+
     public WsRegistrationPage enterPassword(String password) {
         passwordInput.setValue(password);
         return this;
 
     }
+
     public WsRegistrationPage enterConfirmPassword(String password) {
         confirmPasswordInput.setValue(password);
         return this;
 
     }
+
     public WsRegistrationPage submitRegistration() {
         submitRegistrationButton.click();
         return this;
     }
+
     public WsRegistrationPage checkResultRegistration() {
         resultText.shouldHave(text("Your registration completed"));
         return this;
 
-    }    public WsRegistrationPage checkEmailIsShown(String email) {
+    }
+
+    public WsRegistrationPage checkEmailIsShown(String email) {
         headerLinks.get(0).shouldHave(text(email));
         return this;
     }
-
 
 
 }
