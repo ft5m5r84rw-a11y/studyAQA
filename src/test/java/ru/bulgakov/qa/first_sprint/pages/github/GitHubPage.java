@@ -1,11 +1,11 @@
-package ru.bulgakov.qa.github;
+package ru.bulgakov.qa.first_sprint.pages.github;
 
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class GitHubPage {
-    private final SelenideElement clickSearchButton = $(".HeaderSearch-module__label__d1iWG");
+    private final SelenideElement clickSearchButton = $("[data-analytics-event*='searchbar']");
     private final SelenideElement searchInput = $("[placeholder='Search or jump to...']");
 
     public GitHubPage clickSearch() {
@@ -17,7 +17,4 @@ public class GitHubPage {
         searchInput.setValue(query).pressEnter();
         return new GitHubSearchResultsPage();
     }
-
-
-
 }
