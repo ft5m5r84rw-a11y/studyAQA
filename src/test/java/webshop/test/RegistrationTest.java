@@ -2,17 +2,13 @@ package webshop.test;
 
 import io.qameta.allure.*;
 import net.datafaker.Faker;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import webshop.pages.WsRegistrationPage;
-import webshop.pages.WsWelcomePage;
-import static io.qameta.allure.SeverityLevel.CRITICAL;
 
 import static com.codeborne.selenide.Selenide.open;
+import static io.qameta.allure.SeverityLevel.CRITICAL;
 import static webshop.config.Config.WEB_SHOP_REGISTRATION_URL;
-import static webshop.config.Config.WEB_SHOP_URL;
 
 
 public class RegistrationTest extends TestBase {
@@ -20,7 +16,6 @@ public class RegistrationTest extends TestBase {
 
 
     @Test
-    @Tag("positive")
     @Severity(CRITICAL)
     @Feature("Регистрация")
     @Story("Регистрация нового пользователя")
