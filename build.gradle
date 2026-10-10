@@ -38,29 +38,35 @@ test {
 }
 
 task uiTest(type: Test) {
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+
     useJUnitPlatform {
         def tag = System.getProperty("tag")
-        //если тэг указан - запускаем ui + тэг тест
-        //если нет - только ui
+
         if (tag != null && !tag.isBlank()) {
             includeTags("UI & ${tag}")
         } else {
             includeTags("UI")
         }
     }
+
     systemProperties(System.getProperties())
 }
 
 task apiTest(type: Test) {
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+
     useJUnitPlatform {
         def tag = System.getProperty("tag")
-        //если тэг указан - запускаем ui + тэг тест
-        //если нет - только ui
+
         if (tag != null && !tag.isBlank()) {
             includeTags("API & ${tag}")
         } else {
             includeTags("API")
         }
     }
+
     systemProperties(System.getProperties())
 }
