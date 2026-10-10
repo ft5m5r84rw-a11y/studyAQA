@@ -5,10 +5,7 @@ import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import net.datafaker.Faker;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import webshop.pages.WsLoginPage;
@@ -44,6 +41,7 @@ public class LoginTest extends TestBase {
         }
 
         @Test
+        @Tags({@Tag("UI"), @Tag("positive")})
         @DisplayName("Успешная авторизация зарегистрированного пользователя")
         @Severity(CRITICAL)
         @Owner("polina_solnyshkina")
@@ -61,7 +59,7 @@ public class LoginTest extends TestBase {
         }
 
     }
-
+    @Tags({@Tag("UI"), @Tag("negative")})
     @ParameterizedTest(name = "Проверка ошибки валидации при вводе некорректной электронной почты: {0}")
     @Severity(NORMAL)
     @Owner("polina_solnyshkina")

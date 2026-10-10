@@ -5,21 +5,39 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import webshop.config.WebDriverConfig;
 import webshop.util.AttachManager;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.clearBrowserCookies;
+import static com.codeborne.selenide.Selenide.clearBrowserLocalStorage;
+import static webshop.config.Config.getSelenoidChromeOptions;
+import static webshop.config.Config.getWebDriverConfig;
+
 
 public class TestBase {
-    @BeforeAll
-    static void before() {
-        Configuration.browserSize = "1920x1080";
-    }
+    private static final Logger log = LoggerFactory.getLogger(TestBase.class);
+    private static final WebDriverConfig config = getWebDriverConfig();
 
     @BeforeAll
-    static void setUpALL(){
+    static void setUp() {
+
         SelenideLogger.addListener("allureSelenide", new AllureSelenide());
+
+        Configuration.browserSize = config.browserSize();
+        Configuration.browser = config.browser();
+
+        if ("remote".equals(System.getProperty("run"))) {
+
+            Configuration.remote =
+                    "https://" + config.selenoidUser() + ":" + config.selenoidPassword() + "@" + config.selenoidUrl();
+            Configuration.browserCapabilities = getSelenoidChromeOptions();
+
+
+        }
     }
+
 
     @AfterEach
     void tearDown() {
@@ -27,6 +45,9 @@ public class TestBase {
         AttachManager.getPageSource();
         AttachManager.getBrowserConsoleLogs();
 
+        if ("remote".equals(config.run())) {
+            AttachManager.addVideo();
+        }
         clearBrowserCookies();
         clearBrowserLocalStorage();
     }
@@ -36,3 +57,4 @@ public class TestBase {
         closeWebDriver();
     }*/
 }
+

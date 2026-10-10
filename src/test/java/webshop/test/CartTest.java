@@ -1,9 +1,7 @@
 package webshop.test;
 
 import io.qameta.allure.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import webshop.pages.WsCartPage;
 import webshop.pages.WsProductPage;
 import webshop.pages.WsWelcomePage;
@@ -28,6 +26,7 @@ public class CartTest extends TestBase {
     }
 
     @Test
+    @Tags({@Tag("UI"), @Tag("positive")})
     @Epic("Оформление заказа")
     @Feature("Корзина")
     @Story("Добавление товара с выбором конфигурации и количества")
@@ -36,6 +35,7 @@ public class CartTest extends TestBase {
     @Owner("polina_solnyshkina")
     @Link(name = "TASK-004", url = "https://")
     void addItemToCartTest() {
+
         String processor = "Fast";
         String itemQuantity = "2";
         WsProductPage productPage = open(WEB_SHOP_URL, WsWelcomePage.class) //страница товара сохранена в переменную
