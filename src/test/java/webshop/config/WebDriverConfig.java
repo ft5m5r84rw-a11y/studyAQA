@@ -28,7 +28,9 @@ public interface WebDriverConfig extends Config {
 
     String selenoidPassword();
 
+    @DefaultValue("true")
     boolean enableVideo();
 
+    @DefaultValue("true")
     boolean enableVNC();
 }
